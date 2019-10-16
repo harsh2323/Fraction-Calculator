@@ -26,7 +26,7 @@ Given arithmetic expression
 ```x12=12+(2/3)```
 
 
-this input should give the correct output of 38/3
+this input should give the correct output of ```38/3```
 
 
 This program currently supports all four operators for the arithmetic of fractions(+,-,*,/).
