@@ -1,6 +1,3 @@
-// Harsh Shah
-// Asignment 2
-
 #ifndef _FRACTION_H
 #define _FRACTION_H
 
