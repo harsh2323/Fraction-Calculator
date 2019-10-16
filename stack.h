@@ -1,6 +1,3 @@
-// Harsh Shah
-// Assignment 2
-
 #ifndef _STACK_H
 #define _STACK_H
 
