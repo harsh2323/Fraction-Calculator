@@ -1,5 +1,5 @@
 // Harsh Shah
-// Assignment 1
+// Assignment 2
 
 #include "iostream"
 #include "stdlib.h"
@@ -22,7 +22,9 @@ unsigned int hash(string s) {
 
   return pos;
 }
-
+/**
+ * Function to check if an operator has precedence over the other 
+*/
 bool hasPrecedence( char a, char b ) {
 	if( a == '*' || a == '/' ) {
 		return true;
@@ -34,6 +36,9 @@ bool hasPrecedence( char a, char b ) {
 	return b == '+' || b == '-';
 }
  
+/**
+ * Function to perform the arithmetic operations of the Fractions
+*/
 void doOperation( Stack<Fraction> &numStack, Stack<char> &opStack ) {
 
 	Fraction right = numStack.pop();
@@ -55,25 +60,29 @@ void doOperation( Stack<Fraction> &numStack, Stack<char> &opStack ) {
 	numStack.push(answer);
 }
 
+/**
+ * Function to process the symbols given in the input string
+*/
 void processSymbol(string s, int &first) {
 
+	// Check to see if first is a number
 	if(isdigit(s[first])) {
 		int var;
-		string value2 = "";
+		string target = "";
 		string test;
 		while(isdigit(s[first])){
 			var = s[first] - '0';
-			value2 += to_string(var);
+			target += to_string(var);
 			first++;
 		}
 
-		test = value2;
-		int result2 = stoi(value2);
-		Fraction value3(result2, 1);
+		int result = stoi(target);
+		Fraction fValue(result, 1);
 
-		numStack.push(value3);
+		numStack.push(fValue);
 	} 
 
+	// Check to see if first is a letter
 	else if ( isalpha(s[first])  ) {
 		string st(1, s[first]);
 		
@@ -82,11 +91,13 @@ void processSymbol(string s, int &first) {
 		first++;
 	}
 
+	// Check to see if first is an open bracket
 	else if(s[first] == '(') {
 		opStack.push(s[first]);
 		first++;
 	}
 
+	// Check to see if first is a closed bracket
 	else if( s[first] == ')' ) {
 		while( opStack.peek() != '(' ) {
 			doOperation(numStack, opStack);
@@ -95,7 +106,7 @@ void processSymbol(string s, int &first) {
 		opStack.pop();
 		first++;
 	}
-
+	// Check to see if first is an operator
 	else if( s[first] == '+' || s[first] == '-' || s[first] == '*' || s[first] == '/' ) {
 		while( hasPrecedence( opStack.peek(), s[first] ) ) {
 			doOperation(numStack, opStack);
@@ -110,7 +121,9 @@ void processSymbol(string s, int &first) {
 	}
 }
 
-
+/**
+ * Scans the arithmetic expression and changes the value of first if an equals sign is found 
+*/
 void scanForEqual(string s, int &first, string &dest){
 	int i;
 	for(i = 0; i < s.length(); i++) {
@@ -133,6 +146,9 @@ void scanForEqual(string s, int &first, string &dest){
 }
 }
 
+/**
+ * Function to evaluate the input string and give the result
+*/
 Fraction evaluate(string s) {
 	numStack.clear();
 	opStack.clear();
@@ -169,11 +185,15 @@ Fraction evaluate(string s) {
 
 int main() {
 
-	string ab = "x12=14*(52/7)";
+	string s;
+	while(true) {
+		cout << "Enter an expression, or press Cntrl + C to exit: ";
+		cin >> s;
 
-	Fraction as(evaluate(ab));
+		Fraction value(evaluate(s));
 
-	cout << as << endl;
+		cout << value << endl;
+	}
 
 	return 0;
-} 
+}

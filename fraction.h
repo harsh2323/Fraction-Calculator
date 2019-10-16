@@ -1,5 +1,5 @@
 // Harsh Shah
-// Asignment 1
+// Asignment 2
 
 #ifndef _FRACTION_H
 #define _FRACTION_H
