@@ -1,6 +1,3 @@
-# Harsh Shah
-# Assignment 2
-
 CFLAGS = -c -I$(HOME)/Programming/include
 LFLAGS = -L$(HOME)/Programming/lib
 LIBS = -ldataStructures
