@@ -1,6 +1,3 @@
-// Harsh Shah
-// Assignment 2
-
 #include "iostream"
 #include "stdlib.h"
 #include "fraction.h"
