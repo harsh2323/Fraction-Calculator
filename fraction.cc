@@ -1,6 +1,3 @@
-// Harsh Shah
-// Assignment 2
-
 #include "fraction.h"
 
 // function to find the greatest common divsor
